@@ -56,9 +56,6 @@ Task("Generate Build Info")
         var fileName = "buildinfo.json";
 
         var filePath = System.IO.Path.Combine(outputPath, fileName);
-
-        Console.WriteLine(outputPath);
-        Console.WriteLine(filePath);
         
         System.IO.File.WriteAllText(filePath, json);
     });
