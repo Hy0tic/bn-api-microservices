@@ -13,7 +13,6 @@ var target = Argument("target", "Test");
 var solutionFolder = "./";
 var configuration = Argument("configuration", "Release");
 
-
 //////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
@@ -55,8 +54,15 @@ Task("Generate Build Info")
         var outputPath = "./src/bnAPI";
         var fileName = "buildinfo.json";
 
+        // Ensure the directory exists
+        Directory.CreateDirectory(outputPath);
+
         var filePath = System.IO.Path.Combine(outputPath, fileName);
         System.IO.File.WriteAllText(filePath, json);
+
+        // Print paths for debugging
+        Console.WriteLine($"Output Path: {outputPath}");
+        Console.WriteLine($"File Path: {filePath}");
     });
 
 Task("Test")
@@ -69,7 +75,6 @@ Task("Test")
             NoBuild = true
         });
     });
-
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
