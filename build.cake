@@ -52,7 +52,7 @@ Task("Generate Build Info")
         }};
 
         var json = JsonConvert.SerializeObject(data);
-        var outputPath = "./src/bnAPI";
+        var outputPath = "./src/bnApi";
         var fileName = "buildinfo.json";
 
         var filePath = System.IO.Path.Combine(outputPath, fileName);
