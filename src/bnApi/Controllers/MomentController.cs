@@ -4,12 +4,12 @@ namespace bnApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public sealed class HomeController : ControllerBase
+    public sealed class MomentController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult AddMoment()
         {
-            return Ok("Hello, world!");
+            return Ok();
         }
     }
 }
