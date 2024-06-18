@@ -4,3 +4,5 @@ bin
 
 tools/
 buildinfo.json
+
+*.csproj.user
