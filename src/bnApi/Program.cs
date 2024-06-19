@@ -1,6 +1,9 @@
 using Microsoft.OpenApi.Models;
+using bnApi.Settings;
+using bnApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var mongoDbSettings = builder.Configuration.GetSection(nameof(MongoDbConfig)).Get<MongoDbConfig>();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -28,6 +31,13 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+
+builder.Services
+    .AddIdentity<ApplicationUser, ApplicationRole>()
+    .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>
+    (
+        mongoDbSettings.ConnectionString, mongoDbSettings.Name
+    );
 
 var app = builder.Build();
 
